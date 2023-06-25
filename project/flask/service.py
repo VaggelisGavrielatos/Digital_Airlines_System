@@ -19,6 +19,14 @@ reservations = db['reservations']
 # Initiate Flask App
 app = Flask(__name__)
 
+#auto insert admin to the database
+admin = {'username': 'admin', 'password': '1', 'email': 'admin@email.com', 'first_name': 'John', 'last_name': 'Doe', 'birthdate': '23/03/1993', 'country': 'Greece', 'passport_number': 'V4595348', 'role': 'admin'}
+existing_user = users.find_one({'username': 'admin'})
+if not existing_user:
+# Insert the new user
+    users.insert_one(admin)#register to the app
+
+
 isloggedin = False
 isuser = False
 username1 = "None"
